@@ -20,8 +20,13 @@
 		http://www.degraeve.com/img2txt.php
 	
 	DONE 1.1 对所有异常进行统一处理
-	2 使用log4j2写日志
+	
+	DONE 2 使用log4j2写日志
 		1 记录各个级别的日志
+		2 了解log4j2的基本的配置
+	
+	 3 使用Thymeleaf模板引擎渲染数据
+	 
 	
 	
 	

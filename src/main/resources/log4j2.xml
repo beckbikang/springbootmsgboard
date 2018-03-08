@@ -3,19 +3,62 @@
     <properties>
         <!-- 文件输出格式 -->
         <property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} |-%-5level [%thread] %c [%L] -| %msg%n</property>
+        <property name="MSGLOGPATH">/Users/bikang1/log</property>
+
     </properties>
 
     <appenders>
         <Console name="CONSOLE" target="system_out">
-            
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}" />
         </Console>
+
+
+    <RollingFile name="FILE_DEBUG" fileName="${MSGLOGPATH}/debug.log" filePattern="${MSGLOGPATH}/debug-%d{yyyy-MM-dd}.log">
+      <Filters>
+        <ThresholdFilter level="debug" onMatch="NEUTRAL" onMismatch="DENY"/>
+        <ThresholdFilter level="info" onMatch="DENY" onMismatch="ACCEPT"/>
+      </Filters>
+      <Policies>
+        <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+      </Policies>
+      <PatternLayout pattern="${PATTERN}" />
+    </RollingFile>
+
+    <RollingFile name="FILE_INFO" fileName="${MSGLOGPATH}/info.log" filePattern="${MSGLOGPATH}/info-%d{yyyy-MM-dd}.log">
+        <Filters>
+            <ThresholdFilter level="info" onMatch="NEUTRAL" onMismatch="DENY"/>
+            <ThresholdFilter level="error" onMatch="DENY" onMismatch="ACCEPT"/>
+
+        </Filters>
+        <Policies>
+            <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+        </Policies>
+        <PatternLayout pattern="${PATTERN}" />
+    </RollingFile>
+
+
+        <RollingFile name="FILE_ERROR" fileName="${MSGLOGPATH}/error.log" filePattern="${MSGLOGPATH}/error-%d{yyyy-MM-dd}.log">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="NEUTRAL" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+            <PatternLayout pattern="${PATTERN}" />
+        </RollingFile>
     </appenders>
 
+
+
+
     <loggers>
-        <logger name="com.roncoo.education" level="debug" />
-        <root level="info">
+        <logger name="springbootmsgboard" level="Debug" />
+        <root level="all">
             <appenderref ref="CONSOLE" />
+            <appenderref ref="FILE_DEBUG" />
+            <appenderref ref="FILE_INFO" />
+            <appenderref ref="FILE_ERROR" />
         </root>
     </loggers>
 

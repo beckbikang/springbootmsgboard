@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title th:text="${title}"></title>
+</head>
+<body>
+<form action="/add" method="post">
+    用户名: <input type="text" name="name" /><br/>
+    消息: <input type="text" name="msg" /><br/>
+    <input type="submit" value="Submit" />
+</form>
+
+</body>
+
+</html>

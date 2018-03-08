@@ -17,9 +17,6 @@ public class TestController extends SuperController{
     @Value("${msgboard.test}")
     private String localData;
 
-    //@Value("${log4j.rootCategory}")
-    //private String logconfig;
-
     @RequestMapping(value = "/test", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     @ResponseBody
     public String test(){
@@ -32,8 +29,8 @@ public class TestController extends SuperController{
     @RequestMapping(value="/log", method = RequestMethod.GET)
     public void log(){
 
-        this.logger.debug("log-debug");
-        this.logger.info("log-info");x
+        logger.debug("log-debug");
+        logger.info("log-info");
         logger.error("error");
 
     }
