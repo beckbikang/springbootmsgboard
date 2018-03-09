@@ -1,18 +1,29 @@
 package beckbi.msgboard.controller;
 
+import beckbi.msgboard.entity.db.Msgboard;
+import beckbi.msgboard.service.JdbcMsgboardService;
+import beckbi.msgboard.service.JdbcMsgboardServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class TestController extends SuperController{
 
 
+
     private Logger logger = LoggerFactory.getLogger(TestController.class);
+
+
+    @Autowired
+    JdbcMsgboardService jdbcMsgboardService;
 
     @Value("${msgboard.test}")
     private String localData;
@@ -24,6 +35,15 @@ public class TestController extends SuperController{
         restr += localData;
 
         return restr;
+    }
+
+    @RequestMapping(value = "/db", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
+    @ResponseBody
+    public List<Msgboard> db(){
+        String restr ="";
+        List<Msgboard> list = jdbcMsgboardService.findByPage(1,10);
+
+        return list;
     }
 
     @RequestMapping(value="/log", method = RequestMethod.GET)
@@ -56,5 +76,6 @@ public class TestController extends SuperController{
     public void testRunException() throws RuntimeException{
         throw new RuntimeException("catch my exception");
     }
+
 
 }

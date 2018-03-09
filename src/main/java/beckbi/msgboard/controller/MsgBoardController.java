@@ -18,10 +18,16 @@ public class MsgBoardController extends SuperController{
         return modelAndView;
     }
 
+    @RequestMapping(value = "/msgboard/add", method = RequestMethod.POST)
+    public void add(ModelMap map) throws Exception{
+
+    }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public void list() throws Exception{
+    public ModelAndView list() throws Exception{
+        ModelAndView modelAndView = new ModelAndView("msgboard/list");
 
+        return modelAndView;
     }
 
     @RequestMapping(value = "/del", method = RequestMethod.GET)
