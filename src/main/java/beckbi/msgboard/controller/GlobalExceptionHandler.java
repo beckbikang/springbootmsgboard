@@ -9,23 +9,21 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = MyException.class)
     @ResponseBody
-    public String  handleMyExcepteHandler(){
+    public String  handleMyExcepteHandler(MyException  e){
 
         return "catch MyException";
     }
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public String  handleAllExcepteHandler(){
-
-        return "catch Exception";
+    public void  handleAllExcepteHandler(Exception e) throws Exception{
+        throw e;
     }
 
     @ExceptionHandler(value = RuntimeException.class)
     @ResponseBody
-    public String  handleRuntimeExcepteHandler(){
-
-        return "catch RuntimeException";
+    public void  handleRuntimeExcepteHandler(RuntimeException e){
+        throw e;
     }
 
 

@@ -1,5 +1,7 @@
 package beckbi.msgboard.controller;
 
+import beckbi.msgboard.domain.MsgboardJPA;
+import beckbi.msgboard.domain.MsgboardJPARepository;
 import beckbi.msgboard.entity.db.Msgboard;
 import beckbi.msgboard.service.JdbcMsgboardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +18,50 @@ public class TestController extends SuperController{
 
 
 
-
-
+    @Autowired
+    private MsgboardJPARepository msgboardJPARepository;
 
     @Autowired
     JdbcMsgboardService jdbcMsgboardService;
 
     @Value("${msgboard.test}")
     private String localData;
+
+
+
+    @RequestMapping(value = "/jpa")
+    @ResponseBody
+    public String tjpa(){
+
+        String restr = "";
+        logger.info("#######start################");
+
+
+        //查找
+        /*
+        List<MsgboardJPA> list = msgboardJPARepository.findByPage(1,20);
+        logger.info(String.valueOf(list.size()));
+        */
+
+        //增加
+        MsgboardJPA msgboardJPA = new MsgboardJPA("a1", "a222222");
+        msgboardJPARepository.save(msgboardJPA);
+
+
+        //删除
+        long lid = 29;
+        msgboardJPARepository.delete(lid);
+
+        /*
+        List<MsgboardJPA> list = msgboardJPARepository.findAll();
+        logger.info("all:"+String.valueOf(list.size()));
+        */
+        logger.info("#######end################");
+
+
+        return restr;
+    }
+
 
     @RequestMapping(value = "/test", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     @ResponseBody
