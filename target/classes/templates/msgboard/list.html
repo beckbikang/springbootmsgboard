@@ -7,7 +7,34 @@
 </head>
 <body>
 
+<div>
+    <h3>留言板列表:</h3>
+    <a href="/msgboard/add">新增</a>
+    <table border="1">
+        <tr>
+            <td>用户名</td>
+            <td>留言</td>
+            <td>时间</td>
+            <td></td>
+        </tr>
 
+        <tr th:each="msg : ${msgs}">
+            <td th:text="${msg.name}"></td>
+            <td th:text="${msg.msg}"></td>
+            <td th:text="${msg.mtime}"></td>
+            <td><a href="/msgboard/del?id=" th:href="@{'/msgboard/del?id='+${msg.id}}">删除</a></td>
+        </tr>
+    </table>
+    <div th:switch="${prePage}">
+        <div th:case="0"></div>
+        <div th:case="*"><a href="" th:href="@{'/msgboard/list?page='+${prePage}}" >上一页</a></div>
+    </div>
+    <div th:switch="${lastPage}">
+        <div th:case="0"></div>
+        <div th:case="*"><a href="" th:href="@{'/msgboard/list?page='+${lastPage}}" >下页</a></div>
+    </div>
+
+</div>
 </body>
 
 </html>
