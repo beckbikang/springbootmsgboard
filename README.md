@@ -30,7 +30,7 @@
 		1 记录各个级别的日志
 		2 了解log4j2的基本的配置
 	
-	 3 使用Thymeleaf模板引擎渲染数据
+	 DONE 3 使用Thymeleaf模板引擎渲染数据
 	 		基本使用: https://www.cnblogs.com/topwill/p/7434955.html
 	
 	 4 使用三种方式实现列表和添加的功能
@@ -44,18 +44,25 @@
 	 		
 	 	2 Spring-data-jpa
 	 		2.1 与hibernate整合
-	 		2.2 与mybaits整合
+	
+			详细的说明：https://www.cnblogs.com/ityouknow/p/5891443.html
+	 			
 	 	3 Spring Boot多数据源配置和使用
 	 
 	 5 
+	 	
 	 
 	 9 创建项目的springboot的maven模板
 	
 todo	
 	
-	后续整合 
-		Dubbo
+	后续
+		加入登录功能和防刷机制
+	
+	后续整合
+		spring cloud，Dubbo
 		RocketMQ
+		docker
 	
 	
 	
