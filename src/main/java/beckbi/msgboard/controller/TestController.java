@@ -2,9 +2,6 @@ package beckbi.msgboard.controller;
 
 import beckbi.msgboard.entity.db.Msgboard;
 import beckbi.msgboard.service.JdbcMsgboardService;
-import beckbi.msgboard.service.JdbcMsgboardServiceImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +16,7 @@ public class TestController extends SuperController{
 
 
 
-    private Logger logger = LoggerFactory.getLogger(TestController.class);
+
 
 
     @Autowired

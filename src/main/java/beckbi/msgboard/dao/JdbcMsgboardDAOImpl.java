@@ -54,7 +54,7 @@ public class JdbcMsgboardDAOImpl implements JdbcMsgboardDAO {
         logger.info("find start:"+start+" pagesize:"+pagesize);
 
         //传递参数返回结果
-        String sql = "select * from msgboard limit ?, ?";
+        String sql = "select * from msgboard order by mtime desc  limit ?, ?";
         Object[] objects = new Object[]{start, pagesize};
         List<Msgboard> list = jdbcTemplate.query(sql,objects, new BeanPropertyRowMapper(Msgboard.class));
         return list;
