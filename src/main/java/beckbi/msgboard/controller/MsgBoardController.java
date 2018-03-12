@@ -2,6 +2,7 @@ package beckbi.msgboard.controller;
 
 import beckbi.msgboard.entity.db.Msgboard;
 import beckbi.msgboard.service.JdbcMsgboardService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,7 @@ public class MsgBoardController extends SuperController{
         return modelAndView;
     }
 
+    @ApiOperation(value="创建留言", notes="根据用户名字，消息创建留言")
     @RequestMapping(value = "/msgboard/add", method = RequestMethod.POST)
     public void add(HttpServletResponse rsp) throws Exception{
         String name = request.getParameter("name");

@@ -45,12 +45,13 @@ public class TestController extends SuperController{
 
         //增加
         MsgboardJPA msgboardJPA = new MsgboardJPA("a1", "a222222");
-        msgboardJPARepository.save(msgboardJPA);
+        MsgboardJPA msgboardJPA1 = msgboardJPARepository.save(msgboardJPA);
 
 
         //删除
         long lid = 29;
-        msgboardJPARepository.delete(lid);
+
+        msgboardJPARepository.delete(msgboardJPA1.getId());
 
         /*
         List<MsgboardJPA> list = msgboardJPARepository.findAll();
