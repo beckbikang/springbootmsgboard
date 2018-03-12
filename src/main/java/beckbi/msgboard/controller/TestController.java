@@ -5,7 +5,11 @@ import beckbi.msgboard.domain.MsgboardJPARepository;
 import beckbi.msgboard.entity.db.Msgboard;
 import beckbi.msgboard.service.JdbcMsgboardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -113,5 +117,54 @@ public class TestController extends SuperController{
         throw new RuntimeException("catch my exception");
     }
 
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private RedisTemplate<String, Msgboard> redisTemplate;
+
+    @RequestMapping(value = "/tredis", method = RequestMethod.GET)
+    public void testRedis() throws RuntimeException{
+        //基本的redis操作
+        stringRedisTemplate.opsForValue().set("hi", "123");
+        logger.info(stringRedisTemplate.opsForValue().get("hi"));
+
+        //基本的object操作
+        Msgboard msgboard = new Msgboard();
+        msgboard.setId(111111);
+        msgboard.setMsg("haha");
+        msgboard.setName("tom");
+
+        //读
+        redisTemplate.opsForValue().set("aca",msgboard);
+        //写
+        Msgboard msgboard1 = redisTemplate.opsForValue().get("aca");
+        if(msgboard1 != null){
+            logger.info(msgboard1.getName());
+        }else {
+            logger.info("read faild");
+        }
+
+    }
+
+    /*
+    @Autowired
+    @Qualifier("jdbcTemp1")
+    private JdbcTemplate jdbcTemplate1;
+
+    @Autowired
+    @Qualifier("jdbcTemp2")
+    private JdbcTemplate jdbcTemplate2;
+
+    @RequestMapping(value = "/tdt", method = RequestMethod.GET)
+    public void testJdbc2() {
+
+        String sql = "insert into msgboard(name,msg)values('jdbcTemplate1','1')";
+        jdbcTemplate1.execute(sql);
+        String sql2 = "insert into msgboard(name,msg)values('jdbcTemplate2','2')";
+        jdbcTemplate2.execute(sql2);
+    }
+    */
 
 }
