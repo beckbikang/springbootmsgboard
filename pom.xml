@@ -109,6 +109,12 @@
             <artifactId>spring-boot-starter-redis</artifactId>
         </dependency>
 
+        <!--spring boot的actuator监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
 
     </dependencies>
     <!--Spring Boot Maven plugin能够将Spring Boot应用打包为可执行的jar或war文件，

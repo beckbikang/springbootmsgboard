@@ -64,9 +64,28 @@
 	 	注意过滤器的规则和拦截器不要冲突
 	 
 	 7 数据的基本的监控
+	 	加入spring-boot-starter-actuator作为监控
+	 	actuator主要的监控指标
+	 		应用配置类
+	 		度量指标类
+	 		操作控制类
+	 		
+	 	自动化配置报告 /autoconfig
+	 	上下文中创建的所有Bean /beans
+	 	配置的属性信息报告 /configprops
+	 	环境报告 /env
+	 	基本信息 /info
+	 	所有Spring MVC的控制器映射关系报告/mappings
+	 	健康信息 /health
+	 	各类重要度量指标 /metrics
 	 	
-	 
-	
+	 	该端点用来暴露程序运行中的线程信息/dump 
+		该端点用来返回基本的HTTP跟踪信息 /trace
+		
+		配置
+			endpoints.shutdown.enabled=true
+	 		可以通过/shutdown关闭应用端点
+		
 todo	
 	
 	后续
