@@ -33,7 +33,7 @@
 	 DONE 3 使用Thymeleaf模板引擎渲染数据
 	 		基本使用: https://www.cnblogs.com/topwill/p/7434955.html
 	
-	 4 使用三种方式实现列表和添加的功能
+	DONE 4 使用三种方式实现列表和添加的功能
 	 
 	 	1 JdbcTemplate
 	 		1.1 SpringBoot默认采用tomcat-jdbc连接池，如果需要C3P0，DBCP，Druid等作为连接池，需要加入相关依赖以及配置，这里不作说明，采用默认配置即
@@ -48,11 +48,26 @@
 			详细的说明：https://www.cnblogs.com/ityouknow/p/5891443.html
 	 			
 	 	3 Spring Boot多数据源配置和使用
+	 		配置有问题，可以看别的
+	 		使用多个datasource导致了jpa无法访问，可以单独看看
+	 		
+	 DONE 5 使用Swagger2配置和生成通用的api生成文档
+	 	使用Swagger 构架api
+	 	http://localhost:8888/swagger-ui.html
 	 
-	 5 
+	 DONE 5.1 加入springboot集成的redis缓存
+	 
+	 DONE 6 创建通用的拦截器
+		
+	 6.1 过滤器和监听器
+	 	
+	 	注意过滤器的规则和拦截器不要冲突
+	 
+	 7 数据的基本的监控
 	 	
 	 
-	 9 创建项目的springboot的maven模板
+	 9 对maven模板的
+	 	创建项目的springboot的
 	
 todo	
 	
