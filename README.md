@@ -63,7 +63,7 @@
 	 	
 	 	注意过滤器的规则和拦截器不要冲突
 	 
-	 7 数据的基本的监控
+	 DONE 7 数据的基本的监控
 	 	加入spring-boot-starter-actuator作为监控
 	 	actuator主要的监控指标
 	 		应用配置类
@@ -85,11 +85,13 @@
 		配置
 			endpoints.shutdown.enabled=true
 	 		可以通过/shutdown关闭应用端点
-		
-todo	
 	
-	后续
-		加入登录功能和防刷机制
+	8 给留言板加入基于session的登录功能
+	
+	
+	
+	
+todo	
 	
 	后续整合
 		spring cloud，Dubbo
