@@ -86,7 +86,8 @@
 			endpoints.shutdown.enabled=true
 	 		可以通过/shutdown关闭应用端点
 	
-	8 给留言板加入基于session的登录功能
+	8 在spring-boot中使用memcache
+	9 给留言板加入基于session的登录功能
 	
 	
 	
